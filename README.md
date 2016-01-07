@@ -1,5 +1,9 @@
-# TerrainRendering
-Utilisation d'OpenGL 4+ avec Qt pour faire un rendering de terrain.
+# DefaultProject
+
+This project only create an empty program with CMake 2.8.11 and doxygen
+configuration.
+
+Unit testing should be added to the default program configuration.
 
 # Compilation
 
