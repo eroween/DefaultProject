@@ -1,22 +1,20 @@
-################################################################################
-#                                                                              #
-# \file CMakeList.txt                                                          #
-#                                                                              #
-# \brief CMakeList needed to generate the Terrain-Rendering Demo program       #
-#                                                                              #
-# \author Louis Martin-Pierrat                                                 #
-#                                                                              #
-# \version 1.0.0                                                               #
-#                                                                              #
-# \date September 30, 2015                                                     #
-#                                                                              #
-################################################################################
-
+#
+# \file CMakeList.txt
+#
+# \brief CMakeList used to generate a default project.
+#
+# \author Louis Martin-Pierrat
+#
+# \version 1.0.0
+#
+# \date September 30, 2015
+#
 
 ## CMAKE INITIALISATION
 
-PROJECT(TERRAIN_RENDERING)
+PROJECT(DEFAULT_PROJECT)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/cmake_modules)
 
 ## END CMAKE INITIALISATION
 
@@ -24,17 +22,17 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 
 ## PROJECT VERSION
 
-SET(TERRAIN_RENDERING_VERSION_MAJOR 1)
-SET(TERRAIN_RENDERING_VERSION_MINOR 0)
-SET(TERRAIN_RENDERING_VERSION_PATCH 0)
-SET(TERRAIN_RENDERING_VERSION_EXTRA 0)
+SET(PROJECT_VERSION_MAJOR 1)
+SET(PROJECT_VERSION_MINOR 0)
+SET(PROJECT_VERSION_PATCH 0)
+SET(PROJECT_VERSION_EXTRA 0)
 
-SET(TERRAIN_RENDERING_VERSION "\"${TERRAIN_RENDERING_VERSION_MAJOR}.${TERRAIN_RENDERING_VERSION_MINOR}.${TERRAIN_RENDERING_VERSION_PATCH}\"")
-SET(TERRAIN_RENDERING_VERSION_FULL "\"${TERRAIN_RENDERING_VERSION_MAJOR}.${TERRAIN_RENDERING_VERSION_MINOR}.${TERRAIN_RENDERING_VERSION_PATCH}.${TERRAIN_RENDERING_VERSION_EXTRA}\"")
+SET(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+SET(PROJECT_VERSION_FULL ${PROJECT_VERSION}.${PROJECT_VERSION_EXTRA})
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/sources/terrain-rendering.hpp.in"
-    "${CMAKE_SOURCE_DIR}/sources/terrain-rendering.hpp"
+    ${CMAKE_SOURCE_DIR}/sources/project.hpp.in
+    ${CMAKE_SOURCE_DIR}/sources/project.hpp
     )
 
 ## END PROJECT VERSION
@@ -57,7 +55,7 @@ ENABLE_LANGUAGE(CXX)
 
 ## PROJECT SOURCES FILES
 
-SET(TERRAIN_RENDERING_SOURCES_FILES
+SET(PROJECT_SOURCES_FILES
     sources/main.cpp
     )
 
@@ -67,8 +65,8 @@ SET(TERRAIN_RENDERING_SOURCES_FILES
 
 ## PROJECT INCLUDES FILES
 
-SET(TERRAIN_RENDERING_INCLUDES_FILES
-    sources/terrain-rendering.hpp
+SET(PROJECT_INCLUDES_FILES
+    sources/project.hpp
     )
 
 ## END PROJECT INCLUDES FILES
@@ -77,11 +75,11 @@ SET(TERRAIN_RENDERING_INCLUDES_FILES
 
 ## PROJECT INCUDES DIRECTORIES
 
-SET(TERRAIN_RENDERING_INCLUDES_DIRECTORIES
+SET(PROJECT_INCLUDES_DIRECTORIES
     sources/
     )
 
-INCLUDE_DIRECTORIES(${TERRAIN_RENDERING_INCLUDES_DIRECTORIES})
+INCLUDE_DIRECTORIES(${PROJECT_INCLUDES_DIRECTORIES})
 
 ## PROJCET INCLUDES DIRECTORIES
 
@@ -91,12 +89,12 @@ INCLUDE_DIRECTORIES(${TERRAIN_RENDERING_INCLUDES_DIRECTORIES})
 
 IF (CMAKE_BUILD_TYPE MATCHES "debug")
 
-    SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
-    SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/build/debug/")
+    SET(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__)
+    SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build/debug/)
 
 ELSE ()
 
-    SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/build/release/")
+    SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build/release/)
 
 ENDIF ()
 
@@ -106,7 +104,7 @@ ENDIF ()
 
 ## BINARY SETTINGS
 
-ADD_EXECUTABLE(Terrain-Rendering ${TERRAIN_RENDERING_SOURCES_FILES})
+ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES_FILES})
 
 ## END BINARY SETTINGS
 
@@ -137,7 +135,7 @@ IF (DOXYGEN_FOUND)
 
     ADD_CUSTOM_TARGET(doc
         ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/sources"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/sources
         COMMENT "Generating API documentation with Doxygen" VERBATIM
         )
 
