@@ -3,16 +3,16 @@
 ///
 /// \brief Default project main
 ///
-/// \author Louis Martin-Pierrat (mart_p)
+/// \date Sun, 17 Jan 2016 17:36:48
 ///
-/// \version 1.0.0
+/// \version 1.0.2
 ///
 /// \date September 30, 2015
 ///
 
 #include <iostream>
 
-#include "project.hpp"
+#include "DEFAULT_PROJECT/Version.hpp"
 
 int     main(void)
 {

@@ -29,7 +29,10 @@
 # CMake
 cmake/*
 !cmake/cmake_modules
-sources/project.hpp
+
+# Project configuration files
+
+include/DEFAULT_PROJECT/Version.hpp
 doc
 build
 
