@@ -102,6 +102,28 @@ ENDIF ()
 
 
 
+## COMPILATION SETTINGS
+
+#if (WIN32)
+    #if (MSVC)
+    #elseif(CMAKE_COMPILER_IS_GNUCXX)
+    ## SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
+    ## # Not tested
+    #else()
+    #message(SEND_ERROR "You are using an
+    #unsupported Windows compiler! (Not MSVC or GCC)")
+    #endif()
+#elseif (UNIX)
+    #set(CMAKE_PREFIX_PATH "/usr/lib64/qt5")
+    SET(CMAKE_CXX_FLAGS "-std=c++14 -W -Wall -Wextra")
+#else ()
+    #message(SEND_ERROR "You are on an unsupported platform! (Not Win32 or Unix)")
+#ENDIF ()
+
+## END COMPILATION SETTINGS
+
+
+
 ## BINARY SETTINGS
 
 ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES_FILES})
@@ -116,9 +138,14 @@ ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES_FILES})
 
 
 
-## COMPILATION SETTINGS
+## INSTALLATION SETTINGS
 
-##
+INSTALL(TARGETS ${CMAKE_PROJECT_NAME}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib)
+
+## END INSTALLATION SETTINGS
 
 
 
