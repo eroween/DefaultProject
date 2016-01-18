@@ -26,10 +26,6 @@
 *.out
 *.app
 
-# CMake
-cmake/*
-!cmake/cmake_modules
-
 # Project configuration files
 
 include/DEFAULT_PROJECT/Version.hpp
