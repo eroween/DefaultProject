@@ -3,19 +3,20 @@
 ///
 /// \brief Default project main
 ///
-/// \date Sun, 17 Jan 2016 17:36:48
+/// \date Sun, 17 Jan 2016 19:39:21
 ///
-/// \version 1.0.2
+/// \version 1.0.8
 ///
 /// \date September 30, 2015
 ///
 
-#include <iostream>
+#include    <iostream>
 
-#include "DEFAULT_PROJECT/Version.hpp"
+#include    "DEFAULT_PROJECT/Application.hpp"
 
-int     main(void)
+int     main(int argc, char *argv[])
 {
-    std::cout << "Project version : " << PROJECT_VERSION_FULL << std::endl;
-    return 0;
+    DEFAULT_PROJECT::Application    app(argc, argv);
+
+    return app.run();
 }
