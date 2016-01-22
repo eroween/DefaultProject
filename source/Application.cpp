@@ -3,9 +3,9 @@
 ///
 /// \author Martin-Pierrat Louis (mart_p)
 ///
-/// \date Sun, 17 Jan 2016 19:45:55
+/// \date Sun, 17 Jan 2016 20:36:16
 ///
-/// \version 1.0.26
+/// \version 1.0.32
 ///
 
 #include    <iostream>
@@ -34,6 +34,11 @@ namespace   DEFAULT_PROJECT
     Application::run(void)
     {
         std::cout << "Project version : " << PROJECT_VERSION_FULL << std::endl;
+#if defined     __DEBUG__
+        std::cout << "Project compiled in debug mode." << std::endl;
+#elif defined   __RELEASE__
+        std::cout << "Project compiled in release mode." << std::endl;
+#endif
         return 0;
     }
 }
