@@ -193,7 +193,18 @@ SET(GTEST_LIBS_DIR ${binary_dir}/googlemock/gtest)
 
 INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS})
 
-#INCLUDE_DIRECTORIES(${PROJECT_INCLUDE_DIRECTORIES})
+FUNCTION(CXX_TEST name sources)
+
+    ADD_EXECUTABLE(${name} ${sources})
+    ADD_DEPENDENCIES(${name} googletest)
+    TARGET_LINK_LIBRARIES(${name}
+        ${GTEST_LIBS_DIR}/libgtest.a
+        ${GTEST_LIBS_DIR}/libgtest_main.a
+    )
+    TARGET_LINK_LIBRARIES(${name} ${CMAKE_THREAD_LIBS_INIT})
+    ADD_TEST(${name} ${name})
+
+ENDFUNCTION()
 
 ## END TEST CONFIGURATION
 
@@ -201,18 +212,9 @@ INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS})
 
 ## TEST
 
-INCLUDE(cmake/internal_utils.cmake)
-
 ENABLE_TESTING()
 
-ADD_EXECUTABLE(test1 ${CMAKE_SOURCE_DIR}/test/test1.cpp)
-ADD_DEPENDENCIES(test1 googletest)
-TARGET_LINK_LIBRARIES(test1 ${GTEST_LIBS_DIR}/libgtest.a
-    ${GTEST_LIBS_DIR}/libgtest_main.a)
-
-TARGET_LINK_LIBRARIES(test1 ${CMAKE_THREAD_LIBS_INIT})
-
-ADD_TEST(test1 test1)
+CXX_TEST(test1 test/test1.cpp)
 
 ## END TESTS
 
