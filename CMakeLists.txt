@@ -66,8 +66,8 @@ ENABLE_LANGUAGE(CXX)
 
 ## PROJECT SOURCES FILES
 
-SET(PROJECT_SOURCE_FILES
-    ${PROJECT_SOURCE_DIR}/Application.cpp
+FILE(GLOB_RECURSE PROJECT_SOURCE_FILES
+    ${PROJECT_SOURCE_DIR}/*.cpp
     )
 
 ## END PROJECT SOURCES FILES
@@ -76,9 +76,12 @@ SET(PROJECT_SOURCE_FILES
 
 ## PROJECT INCLUDES FILES
 
-SET(PROJECT_INCLUDE_FILES
-    ${PROJECT_INCLUDE_DIR}/Application.hpp
-    ${PROJECT_INCLUDE_DIR}/Version.hpp
+FILE(GLOB_RECURSE PROJECT_INCLUDE_FILES
+    ${PROJECT_INCLUDE_DIR}/*.hpp
+    )
+
+FILE(GLOB_RECURSE PROJECT_TEMPLATE_FILES
+    ${PROJECT_INCLUDE_DIR}/*.tpp
     )
 
 ## END PROJECT INCLUDES FILES
@@ -101,11 +104,11 @@ INCLUDE_DIRECTORIES(${PROJECT_INCLUDE_DIRECTORIES})
 
 IF (CMAKE_BUILD_TYPE MATCHES "debug")
 
-    SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
+    ADD_DEFINITIONS(-D__DEBUG__)
 
 ELSE ()
 
-    SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -D__RELEASE__")
+    ADD_DEFINITIONS(-D__RELEASE__)
 
 ENDIF ()
 
@@ -115,21 +118,27 @@ ENDIF ()
 
 ## COMPILATION SETTINGS
 
-#if (WIN32)
-    #if (MSVC)
-    #elseif(CMAKE_COMPILER_IS_GNUCXX)
-    ## SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
-    ## # Not tested
-    #else()
-    #message(SEND_ERROR "You are using an
-    #unsupported Windows compiler! (Not MSVC or GCC)")
-    #endif()
-#elseif (UNIX)
-    #set(CMAKE_PREFIX_PATH "/usr/lib64/qt5")
-    SET(CMAKE_CXX_FLAGS "-std=c++14 -W -Wall -Wextra")
-#else ()
-    #message(SEND_ERROR "You are on an unsupported platform! (Not Win32 or Unix)")
-#ENDIF ()
+IF(CMAKE_COMPILER_IS_GNUCXX)
+
+    ADD_DEFINITIONS(-Wall -Wextra -std=c++14)
+
+ENDIF()
+
+##if (WIN32)
+    ##if (MSVC)
+    ##elseif(CMAKE_COMPILER_IS_GNUCXX)
+    ### SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
+    ### # Not tested
+    ##else()
+    ##message(SEND_ERROR "You are using an
+    ##unsupported Windows compiler! (Not MSVC or GCC)")
+    ##endif()
+##elseif (UNIX)
+    ##set(CMAKE_PREFIX_PATH "/usr/lib64/qt5")
+    #SET(CMAKE_CXX_FLAGS "-std=c++14 -W -Wall -Wextra")
+##else ()
+    ##message(SEND_ERROR "You are on an unsupported platform! (Not Win32 or Unix)")
+##ENDIF ()
 
 ## END COMPILATION SETTINGS
 
@@ -160,6 +169,41 @@ INSTALL(TARGETS ${CMAKE_PROJECT_NAME}
     ARCHIVE DESTINATION lib)
 
 ## END INSTALLATION SETTINGS
+
+
+
+## TEST CONFIGURATION
+
+INCLUDE(ExternalProject)
+
+EXTERNALPROJECT_ADD(googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    CMAKE_ARGS -DBUILD_GTEST=ON
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+    INSTALL_COMMAND ""
+    )
+
+# Specify include dir
+EXTERNALPROJECT_GET_PROPERTY(googletest source_dir)
+SET(GTEST_INCLUDE_DIRS ${source_dir}/googletest/include)
+
+# Specify MainTest's link libraries
+EXTERNALPROJECT_GET_PROPERTY(googletest binary_dir)
+SET(GTEST_LIBS_DIR ${binary_dir}/googlemock/gtest)
+
+## END TEST CONFIGURATION
+
+
+
+## TEST
+
+INCLUDE(cmake/internal_utils.cmake)
+
+ENABLE_TESTING()
+
+cxx_test(test1 SOURCES)
+
+## END TESTS
 
 
 
