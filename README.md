@@ -1,9 +1,7 @@
 # DefaultProject
 
-This project only create an empty program with CMake 2.8.11 and doxygen
-configuration.
-
-This project is configured to use C++14 and GTest.
+This project only create an empty program with CMake 2.8.11, doxygen, c++14
+Google Test.
 
 # Compilation
 
