@@ -101,18 +101,6 @@ INCLUDE_DIRECTORIES(${PROJECT_INCLUDE_DIR})
 
 ## PROJECT SETTINGS
 
-IF (CMAKE_BUILD_TYPE MATCHES "debug")
-
-    ADD_DEFINITIONS(-D__DEBUG__)
-    ADD_DEFINITIONS(-g3)
-
-ELSE ()
-
-    ADD_DEFINITIONS(-D__RELEASE__)
-    ADD_DEFINITIONS(-O2)
-
-ENDIF ()
-
 ## END PROJECT SETTINGS
 
 
@@ -211,14 +199,14 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     # The warning is inactive inside a system header file, such as the STL, so
     # one can still use the STL.
     # One may also define classes that indirectly use multiple inheritance.
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wmultiple-inheritance)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wmultiple-inheritance)
 
     # Warn when a class is defined with a virtual direct base classe.
     # Some coding rules disallow multiple inheritance, and this may be used to
     # enforce that rule. The warning is inactive inside a system header file,
     # such as the STL, so one can still use the STL.
     # One may also define classes that indirectly use virtual inheritance.
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wvirtual-inheritance)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wvirtual-inheritance)
 
 
     # Give a warning when a value of type float is implicitly promoted to
@@ -254,7 +242,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     # The only difference between -Wswitch and this option is that this option
     # gives a warning about an omitted enumeration code even if there is a
     # default label.
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wswitch-enum)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wswitch-enum)
 
     # Warn about functions that might be candidates for attributes pure, const
     # or noreturn.
@@ -268,9 +256,9 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     # default at -O and higher.
     #
     # Higher optimization levels improve the accuracy of the analysis.
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=pure)
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=const)
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=noreturn)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=pure)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=const)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wsuggest-attribute=noreturn)
 
     # Warn about types with virtual methods where code quality would be improved
     # if the type were declared with the C++11 final specifier, or, if possible,
@@ -302,7 +290,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     #   if (p->q != NULL) { ...  }
     #   else if (p->q != NULL) { ...  }
     #
-    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wduplicated-cond)
+    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wduplicated-cond)
 
     # Warn if floating-point values are used in equality comparisons.
     #
