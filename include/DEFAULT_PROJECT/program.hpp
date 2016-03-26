@@ -15,33 +15,56 @@
 // Copyright (C) 2016 Martin-Pierrat Louis (louismartinpierrat@gmail.com)
 //
 
-#ifndef     __DEFAULT_PROJECT_APPLICATION_HPP__
-# define    __DEFAULT_PROJECT_APPLICATION_HPP__
+#pragma once
 
 namespace   DEFAULT_PROJECT
 {
     ///
-    /// \brief Project entry point.
+    /// \brief program entry point.
     ///
-    class       Application
+    class       program final
     {
         public:
             ///
             /// \brief Default constructor.
             ///
-            Application(void);
+            program(void);
 
             ///
-            /// \brief constructor with program arguments.
+            /// \brief Constructor with program arguments.
             ///
-            Application(int argc, char *argv[]);
+            program(int argc, char *argv[]);
+
+            ///
+            /// \brief Deleted copy constructor.
+            ///
+            program(const program &other) = delete;
+
+            ///
+            /// \brief Deleted move constructor.
+            ///
+            program(program &&other) noexcept = delete;
+
+            ///
+            /// \brief Destructor.
+            ///
+            ~program(void);
 
         public:
             ///
-            /// \brief This method run the application.
+            /// \brief Deleted copy assignment operator.
+            ///
+            program     &operator=(const program &other) = delete;
+
+            ///
+            /// \brief Deleted move assignment operator.
+            ///
+            program     &operator=(program &&other) noexcept = delete;
+
+        public:
+            ///
+            /// \brief This method run the program.
             ///
             int     run(void);
     };
 }
-
-#endif /* !__DEFAULT_PROJECT_APPLICATION_HPP__ */

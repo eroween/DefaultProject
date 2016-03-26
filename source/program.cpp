@@ -16,20 +16,21 @@
 //
 
 #include    <iostream>
+#include    <cstdlib>
 
-#include    "DEFAULT_PROJECT/Application.hpp"
-#include    "DEFAULT_PROJECT/Version.hpp"
+#include    "DEFAULT_PROJECT/program.hpp"
+#include    "DEFAULT_PROJECT/version.hpp"
 
 namespace   DEFAULT_PROJECT
 {
-    Application::Application(void)
+    program::program(void)
     {
         // nothing to do.
     }
 
-    Application::Application(int argc, char *argv[])
+    program::program(int argc, char *argv[])
     {
-        std::cout << "Application launched with : " << "\n";
+        std::cout << "Program launched with : " << "\n";
         for (int i = 0 ; i < argc ; ++i)
         {
             std::cout << "\t" << argv[i] << "\n";
@@ -37,15 +38,17 @@ namespace   DEFAULT_PROJECT
         std::cout << "as arguments."<< std::endl;
     }
 
+    program::~program(void)
+    {
+         // Nothing to do.
+    }
+
+
+
     int
-    Application::run(void)
+    program::run(void)
     {
         std::cout << "Project version : " << PROJECT_VERSION_FULL << std::endl;
-#if defined     __DEBUG__
-        std::cout << "Project compiled in debug mode." << std::endl;
-#elif defined   __RELEASE__
-        std::cout << "Project compiled in release mode." << std::endl;
-#endif
-        return 0;
+        return EXIT_SUCCESS;
     }
 }

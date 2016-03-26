@@ -47,8 +47,8 @@ SET(PROJECT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/)
 SET(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/source/)
 
 CONFIGURE_FILE(
-    ${PROJECT_INCLUDE_DIR}/Version.hpp.in
-    ${PROJECT_INCLUDE_DIR}/Version.hpp
+    ${PROJECT_INCLUDE_DIR}/${CMAKE_PROJECT_NAME}/version.hpp.in
+    ${PROJECT_INCLUDE_DIR}/${CMAKE_PROJECT_NAME}/version.hpp
     )
 
 ## END PROJECT CONFIGURATION
@@ -102,6 +102,15 @@ INCLUDE_DIRECTORIES(${PROJECT_INCLUDE_DIR})
 ## PROJECT SETTINGS
 
 ## END PROJECT SETTINGS
+
+
+
+## BINARY SETTINGS
+
+ADD_LIBRARY(SOURCES ${PROJECT_SOURCE_FILES})
+ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
+
+## END BINARY SETTINGS
 
 
 
@@ -199,14 +208,14 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     # The warning is inactive inside a system header file, such as the STL, so
     # one can still use the STL.
     # One may also define classes that indirectly use multiple inheritance.
-    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wmultiple-inheritance)
+    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wmultiple-inheritance)
 
     # Warn when a class is defined with a virtual direct base classe.
     # Some coding rules disallow multiple inheritance, and this may be used to
     # enforce that rule. The warning is inactive inside a system header file,
     # such as the STL, so one can still use the STL.
     # One may also define classes that indirectly use virtual inheritance.
-    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wvirtual-inheritance)
+    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wvirtual-inheritance)
 
 
     # Give a warning when a value of type float is implicitly promoted to
@@ -290,7 +299,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
     #   if (p->q != NULL) { ...  }
     #   else if (p->q != NULL) { ...  }
     #
-    TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wduplicated-cond)
+    #TARGET_COMPILE_OPTIONS(${CMAKE_PROJECT_NAME} PRIVATE -Wduplicated-cond)
 
     # Warn if floating-point values are used in equality comparisons.
     #
@@ -477,15 +486,6 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 ENDIF()
 
 ## END COMPILATION SETTINGS
-
-
-
-## BINARY SETTINGS
-
-ADD_LIBRARY(SOURCES ${PROJECT_SOURCE_FILES})
-ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
-
-## END BINARY SETTINGS
 
 
 

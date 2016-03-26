@@ -15,13 +15,11 @@
 // Copyright (C) 2016 Martin-Pierrat Louis (louismartinpierrat@gmail.com)
 //
 
-#include    <iostream>
-
-#include    "DEFAULT_PROJECT/Application.hpp"
+#include    "DEFAULT_PROJECT/program.hpp"
 
 int     main(int argc, char *argv[])
 {
-    DEFAULT_PROJECT::Application    app(argc, argv);
+    DEFAULT_PROJECT::program    program(argc, argv);
 
-    return app.run();
+    return program.run();
 }
