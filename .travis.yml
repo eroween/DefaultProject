@@ -8,6 +8,8 @@ addons:
             - g++-5
             - gcc-5
 language: cpp
+sudo: required
+dist: precise
 compiler:
     - clang
     - gcc
