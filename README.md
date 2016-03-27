@@ -3,6 +3,17 @@
 This project only create an empty program with CMake 2.8.11, doxygen, c++14
 Google Test.
 
+## TODO
+
+Add GSL
+
+https://github.com/isocpp/CppCoreGuidelines/tree/master/docs
+https://github.com/Microsoft/GSL/tree/master/include
+
+Add Travis
+
+Add Coverity
+
 # Compilation
 
 ## Release
