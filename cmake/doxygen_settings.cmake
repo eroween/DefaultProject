@@ -29,7 +29,7 @@ FUNCTION(CONFIGURE_DOXYGEN)
 
         ADD_CUSTOM_TARGET(doc
             ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/source
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             COMMENT "Generating API documentation with Doxygen" VERBATIM
             )
 
