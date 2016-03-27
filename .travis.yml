@@ -4,6 +4,9 @@ language: cpp
 compiler:
     - clang
     - gcc
+os:
+    - linux
+    - osx
 before_script:
       - mkdir build
       - cd build
