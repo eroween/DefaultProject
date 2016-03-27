@@ -32,6 +32,8 @@ namespace   DEFAULT_PROJECT
 
             ///
             /// \brief Constructor with program arguments.
+            /// \param argc Number of arguments in the argv array.
+            /// \param argv The array of arguments.
             ///
             program(int argc, char *argv[]);
 
@@ -64,6 +66,8 @@ namespace   DEFAULT_PROJECT
         public:
             ///
             /// \brief This method run the program.
+            /// \return EXIT_SUCCESS if the program success in this task,
+            ///     EXIT_FAILURE otherwise.
             ///
             int     run(void);
     };
