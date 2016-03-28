@@ -10,9 +10,9 @@ Google Test.
 Add GSL
 
 https://github.com/isocpp/CppCoreGuidelines/tree/master/docs
+
 https://github.com/Microsoft/GSL/tree/master/include
 
-Add Travis-CI
 Add AppVeyor
 
 Add Coveralls
