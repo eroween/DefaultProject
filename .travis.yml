@@ -2,11 +2,8 @@ addons:
     apt:
         sources:
             - llvm-toolchain-precise-3.7
-            - ubuntu-toolchain-r-test
         packages:
             - clang-3.7
-            - g++-5
-            - gcc-5
 language: cpp
 sudo: required
 dist: trusty
@@ -17,9 +14,11 @@ os:
     - linux
     - osx
 before_install:
-    - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew update          ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew update        ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux"  ]]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y ; fi
 install:
     - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew install gcc5 ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux"  ]]; then sudo apt-get install gcc-5 g++-5 ; fi
 after_install:
     - if [ "$CXX" = "g++"  ]; then export CXX="g++-5" CC="gcc-5"; fi
     - if [ "$CXX" = "clang++"  ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
