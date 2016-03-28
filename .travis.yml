@@ -1,7 +1,7 @@
 addons:
     apt:
         sources:
-            - llvm-toolchain-precise
+            - llvm-toolchain-trusty
             - ubuntu-toolchain-r-test
         packages:
             - clang-3.7
@@ -23,4 +23,6 @@ before_script:
       - mkdir build
       - cd build
       - cmake -DCMAKE_BUILD_TYPE=release ..
-script: make
+script:
+    - make
+    - make test
