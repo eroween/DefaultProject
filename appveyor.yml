@@ -1,8 +1,6 @@
 version: '1.0.{build}'
 install:
-    - mkdir build
-    - cd build
-    - cmake -DCMAKE_BUILD_TYPE=release ..
+    - cmake -DCMAKE_BUILD_TYPE=release .
     - ls
 branches:
     except:
