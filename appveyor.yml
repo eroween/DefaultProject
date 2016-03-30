@@ -14,6 +14,7 @@ configuration:
     - Release
 platform:
     - x86
+    - Win32
     - Any CPU
 matrix:
     fast_finish: false
