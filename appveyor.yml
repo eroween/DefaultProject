@@ -1,0 +1,17 @@
+version: '1.0.{build}'
+install:
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_BUILD_TYPE=release ..
+    - make
+branches:
+    except:
+        - gh-pages
+configuration:
+    - Debug
+    - Release
+platform:
+    - x86
+    - Any CPU
+matrix:
+    fast_finish: false
