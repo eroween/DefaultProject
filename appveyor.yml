@@ -4,6 +4,8 @@ install:
     - cd build
     - cmake ..
     - cd ..
+build_script:
+    - msbuild "build//DEFAULT_PROJECT.sln" /p:Configuration=Debug /p:Platform=x86
 branches:
     except:
         - gh-pages
