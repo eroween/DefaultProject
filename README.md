@@ -53,40 +53,42 @@ make
 
 ## Example
 
-    #include    <iostream>
-    #include    <cstdlib>
+```c++
+#include    <iostream>
+#include    <cstdlib>
 
-    #include    "DEFAULT_PROJECT/program.hpp"
-    #include    "DEFAULT_PROJECT/version.hpp"
+#include    "DEFAULT_PROJECT/program.hpp"
+#include    "DEFAULT_PROJECT/version.hpp"
 
-    namespace   DEFAULT_PROJECT
+namespace   DEFAULT_PROJECT
+{
+    program::program(void)
     {
-        program::program(void)
-        {
-            // nothing to do.
-        }
-
-        program::program(int argc, char *argv[])
-        {
-            std::cout << "Program launched with : " << "\n";
-            for (int i = 0 ; i < argc ; ++i)
-            {
-                std::cout << "\t" << argv[i] << "\n";
-            }
-            std::cout << "as arguments."<< std::endl;
-        }
-
-        program::~program(void)
-        {
-             // Nothing to do.
-        }
-
-
-
-        int
-        program::run(void)
-        {
-            std::cout << "Project version : " << PROJECT_VERSION_FULL << std::endl;
-            return EXIT_SUCCESS;
-        }
+        // nothing to do.
     }
+
+    program::program(int argc, char *argv[])
+    {
+        std::cout << "Program launched with : " << "\n";
+        for (int i = 0 ; i < argc ; ++i)
+        {
+            std::cout << "\t" << argv[i] << "\n";
+        }
+        std::cout << "as arguments."<< std::endl;
+    }
+
+    program::~program(void)
+    {
+         // Nothing to do.
+    }
+
+
+
+    int
+    program::run(void)
+    {
+        std::cout << "Project version : " << PROJECT_VERSION_FULL << std::endl;
+        return EXIT_SUCCESS;
+    }
+}
+```
