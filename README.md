@@ -2,18 +2,21 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/eroween/DefaultProject?svg=true)](https://ci.appveyor.com/project/eroween/DefaultProject)
 # DefaultProject
 
-This project only create an empty program with CMake 2.8.11, doxygen, c++14
-Google Test.
+This project only create an empty program with :
+    -   CMake 2.8.11
+    -   doxygen
+    -   c++14
+    -   googletest
+
+    -   appveyor
+    -   travis
 
 ## TODO
 
 Add GSL
 
 https://github.com/isocpp/CppCoreGuidelines/tree/master/docs
-
-https://github.com/Microsoft/GSL/tree/master/include
-
-Add AppVeyor
+https://github.com/Microsoft/GSL/
 
 Add Coveralls
 
