@@ -5,7 +5,7 @@ install:
     - cmake ..
     - cd ..
 build_script:
-    - msbuild "build//DEFAULT_PROJECT.sln" /p:Configuration=$(configuration) /p:Platform=$(platform)
+    - cmd msbuild "build//DEFAULT_PROJECT.sln" /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM
 branches:
     except:
         - gh-pages
