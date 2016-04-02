@@ -27,31 +27,7 @@ https://github.com/Microsoft/GSL/
 Add Coveralls
 Add Coverity
 
-
-# Compilation
-
-## Release
-
-```shell
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=release ..
-make
-```
-
-## Debug
-
-The debug compilation add extra flags enabling debugging environment to trace
-the program.
-
-```shell
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=debug ..
-make
-```
-
-## Example
+# Example
 
 ```c++
 #include    <iostream>
@@ -92,3 +68,27 @@ namespace   DEFAULT_PROJECT
     }
 }
 ```
+
+# Compilation
+
+## Release
+
+```shell
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=release ..
+make
+```
+
+## Debug
+
+The debug compilation add extra flags enabling debugging environment to trace
+the program.
+
+```shell
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=debug ..
+make
+```
+
