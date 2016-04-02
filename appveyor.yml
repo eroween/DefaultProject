@@ -6,7 +6,9 @@ install:
     - if ["%platform%"] == ["Win32"] cmake -G "Visual Studio 14 2015" ..
     - cd ..
 build_script:
-    - msbuild "build//DEFAULT_PROJECT.sln"
+    - msbuild "build/DEFAULT_PROJECT.sln"
+test_script:
+    - make test
 branches:
     except:
         - gh-pages
