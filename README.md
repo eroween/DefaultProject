@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/eroween/DefaultProject.svg?branch=master)](https://travis-ci.org/eroween/DefaultProject)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/github/eroween/DefaultProject?svg=true)](https://ci.appveyor.com/project/eroween/DefaultProject)
 # DefaultProject
 
 This project only create an empty program with CMake 2.8.11, doxygen, c++14
