@@ -8,7 +8,9 @@ install:
 build_script:
     - msbuild "build/DEFAULT_PROJECT.sln"
 test_script:
+    - cd build
     - ctest
+    - cd ..
 branches:
     except:
         - gh-pages
