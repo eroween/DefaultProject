@@ -3,6 +3,7 @@
 # DefaultProject
 
 This project only create an empty program with :
+
     -   CMake 2.8.11
     -   doxygen
     -   c++14
