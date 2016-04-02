@@ -2,12 +2,11 @@ version: '1.0.{build}'
 install:
     - mkdir build
     - cd build
-    - cmake ..
+    - if [[ "%platform%" == "x64" ]];   then cmake -G "Visual Studio 14 2015 Win64" ..  ; fi
+    - if [[ "%platform%" == "Win32" ]]; then cmake -G "Visual Studio 14 2015" ..        ; fi
     - cd ..
 build_script:
-    - echo %platform%
-    - echo %configuration%
-    - msbuild "build/DEFAULT_PROJECT.sln" /p:Platform=%platform%
+    - msbuild "build//DEFAULT_PROJECT.sln"
 branches:
     except:
         - gh-pages
