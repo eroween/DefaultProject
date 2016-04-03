@@ -17,16 +17,6 @@ Continuous integration :
 
 already configured.
 
-## TODO
-
-Add GSL
-
-https://github.com/isocpp/CppCoreGuidelines/tree/master/docs
-https://github.com/Microsoft/GSL/
-
-Add Coveralls
-Add Coverity
-
 # Example
 
 ```c++
